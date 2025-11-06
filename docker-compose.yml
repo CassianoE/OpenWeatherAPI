@@ -12,12 +12,13 @@ services:
 
   api:
     build: .
+    env_file:
+      - .env      
     environment:
       DATABASE_URL: postgresql+psycopg2://postgres:postgres@db:5432/weather
-      OPENWEATHER_API_KEY: ${OPENWEATHER_API_KEY}
     depends_on:
       - db
     volumes:
-      - ./:/app       
+      - ./:/app
     ports:
       - "8000:8000"
